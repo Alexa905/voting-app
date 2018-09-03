@@ -1,5 +1,4 @@
 let users = require('./stubData');
-const encryptor = require('./encryptor')
 
 const userManager = {
   getUsers: () => {
@@ -13,16 +12,10 @@ const userManager = {
     users.splice(users.indexOf(user), 1)
   },
   updateUser: (user, updatedUser) => {
-    if(user.password){
-      user.password = encryptor.encrypt(new Buffer(user.password, "utf8"))
-    }
     users.splice(users.indexOf(user), 1, updatedUser);
   },
   addUser: user => {
     user.id = userManager.generateId();
-    if(user.password){
-      user.password = encryptor.encrypt(new Buffer(user.password, "utf8"))
-    }
     users.push(user);
 
   }

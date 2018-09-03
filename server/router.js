@@ -1,23 +1,26 @@
 'use strict'
 
 const express = require('express')
-const encryptor = require('./encryptor')
 const userManager =  require('./userManager')
 const router = express.Router()
 
-const db = require("./models");
-const Card = db.card;
+const { card } = require("./models");
+
+
 
 router.route('/cards/')
 	.get(function (req, res, next) {
-		Card.findAll().then(data => {
+		card.findAll().then(data => {
 			res.json(data)
 		});
 	})
 	.post(function (req, res, next) {
 		const user = req.body
-    userManager.addUser(user)
-		res.status(200).json(userManager.getUsers())
+   // userManager.addUser(user)
+		card.create(user).then(()=>{
+			res.send(req.body);
+		});
+	//	res.status(200).json(userManager.getUsers())
 
 	});
 

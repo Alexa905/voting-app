@@ -8,7 +8,11 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --fix",
     "migrate-db:dev": "cross-env NODE_ENV=dev sequelize db:migrate",
-    "migrate-db:dev:undo": "cross-env NODE_ENV=dev sequelize db:migrate:undo"
+    "migrate-db:dev:undo": "cross-env NODE_ENV=dev sequelize db:migrate:undo",
+    "start:postgres": "npm run db:create && npm run db:migrate && npm run db:fill",
+    "db:create": "node_modules/.bin/sequelize db:create",
+    "db:drop": "node_modules/.bin/sequelize db:drop",
+    "db:fill": "babel-node ./server/migrator.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
