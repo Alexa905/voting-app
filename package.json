@@ -1,0 +1,70 @@
+{
+  "name": "voting-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_ENV=dev sequelize db:migrate && nodemon ./server/index.js",
+    "serve": " vue-cli-service serve --fix",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint --fix",
+    "migrate-db:dev": "cross-env NODE_ENV=dev sequelize db:migrate",
+    "migrate-db:dev:undo": "cross-env NODE_ENV=dev sequelize db:migrate:undo"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "nodemon": "^1.18.3",
+    "pg": "^7.4.3",
+    "sequelize": "^4.38.0",
+    "sequelize-cli": "^4.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-rc.11",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.11",
+    "@vue/cli-service": "^3.0.0-rc.11",
+    "babel-cli": "^6.26.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
+    "lint-staged": "^7.2.0",
+    "vue": "^2.5.17",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "engines": {
+    "node": ">=8.11.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint --fix",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint --fix",
+      "git add"
+    ]
+  }
+}
