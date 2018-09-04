@@ -1,18 +1,15 @@
 <template>
-    <div class="user-card">
+    <div class="vote-card">
         <h3>User card</h3>
-        <div class="user-card-info">
-            <p>Name: <b>{{ user.name}}</b></p>
-            <p>Country: <b>{{ user.country || "-"}}</b></p>
-            <p>Email: <b>{{ user.email || "-"}}</b></p>
-            <p> Date of birth: <b>{{ user.birthday || "-"}}</b></p>
-            <p>Password: <b>**********</b></p>
-            <p> Superuser: <b>{{user.isSuperUser ? 'yes' : 'no'}}</b></p>
-            <p>Notes: <b>{{ user.notes || "-"}}</b></p>
+        <div class="vote-card-info">
+            <p>Title: <b>{{ card.title}}</b></p>
+            <p>Genre: <b>{{ card.description || "-"}}</b></p>
+            <p>Votes: <b>{{ card.votes || "0"}}</b></p>
+            <p>Created: <b>{{ card.createdAt}}</b></p>
+            <p>Last update: <b>{{ card.updatedAt}}</b></p>
         </div>
-        <div class="user-card-footer">
-            <button v-on:click.prevent="deleteUser">Delete User</button>
-            <button v-on:click="switchMode">Edit User</button>
+        <div class="vote-card-footer">
+            <button v-on:click="switchMode">Edit Card</button>
         </div>
     </div>
 
@@ -20,15 +17,15 @@
 
 <script>
   export default {
-    name: 'UserCard',
-    props: ['user', 'switchMode', 'deleteUser'],
+    name: 'VoteCard',
+    props: ['card', 'switchMode'],
 
   };
 </script>
 
 <style scoped>
-    .user-card {
-        width: 80%;
+    .vote-card {
+        width: 60%;
         border: 1px solid black;
         text-align: left;
         margin: 0 auto 20px auto;
@@ -42,10 +39,10 @@
         border-bottom: 1px solid #5e5e5e;
         text-align: center;
     }
-    .user-card-info{
+    .vote-card-info{
         padding: 20px;
     }
-    .user-card-footer{
+    .vote-card-footer{
         border-top: 1px solid #5e5e5e;
         padding: 12px 0;
         text-align: center;

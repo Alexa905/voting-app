@@ -15,14 +15,14 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/users/add',
-      name: 'ADD USER',
+      path: '/cards/add',
+      name: 'ADD CARD',
       component: () => import('./views/AddCard.vue'),
     },
     {
-      path: '/user/:id',
-      name: 'USER PAGE',
-      component: () => import('./views/UserPage.vue'),
+      path: '/card/:id',
+      name: 'CARD PAGE',
+      component: () => import('./views/VoteCardPage.vue'),
     },
     {
       path: '*',

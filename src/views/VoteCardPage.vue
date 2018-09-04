@@ -1,47 +1,47 @@
 <template>
-    <div class="user-page">
-        <div v-if="isUserExist && !message">
+    <div class="card-page">
+        <div v-if="isCardExist && !message">
             <component v-bind:is="component"
-                       v-bind:user="user"
-                       v-bind:deleteUser="deleteUser"
-                       v-bind:updateUser="updateUser"
+                       v-bind:card="card"
+                       v-bind:deleteCard="deleteCard"
+                       v-bind:updateCard="updateCard"
                        v-bind:switchMode="switchMode">
             </component>
         </div>
         <div v-if="message">{{ message }}</div>
-        <div v-if="!isUserExist">User Not Found</div>
+        <div v-if="!isCardExist">Card Not Found</div>
     </div>
 
 </template>
 
 <script>
 
-  import UserCard from '@/components/UserCard.vue';
-  import EditUser from '@/components/EditUser.vue';
+  import VoteCard from '@/components/VoteCard.vue';
+  import EditCard from '@/components/EditCard.vue';
 
   export default {
     name: 'Home',
     components: {
-      UserCard, EditUser,
+	    VoteCard, EditCard,
     },
     data() {
       return {
         id: this.$route.params.id,
-        user: {},
+        card: {},
         message: '',
-        component: UserCard,
-        editMode: false
+        component: EditCard,
+        editMode: true
       };
     },
     computed: {
-      isUserExist() {
-        return Object.keys(this.user).length;
+      isCardExist() {
+        return Object.keys(this.card).length;
       },
     },
     created() {
       this.$http.get(`${this.$router.options.server}/api/card/${this.id}`)
         .then((data) => {
-          this.user = data.body;
+          this.card = data.body;
         })
         .catch((data) => {
           window.console.error('ERROR', data);
@@ -51,12 +51,12 @@
       switchMode() {
         this.editMode = !this.editMode;
         this.message = '';
-        this.component =  this.editMode ? 'EditUser' : 'UserCard';
+        this.component =  this.editMode ? 'EditCard' : 'VoteCard';
       },
-      deleteUser() {
+      deleteCard() {
         this.$http.delete(`${this.$router.options.server}/api/card/${this.id}`)
           .then(() => {
-            this.message = 'User has been deleted successfully!';
+            this.message = 'Item has been deleted successfully!';
             window.setTimeout(() => {
               this.$router.push({name: 'HOME PAGE'});
             }, 2000);
@@ -65,10 +65,10 @@
             window.console.error('ERROR', data);
           });
       },
-      updateUser() {
-        this.$http.put(`${this.$router.options.server}/api/card/${this.user.id}`, this.user)
+      updateCard() {
+        this.$http.put(`${this.$router.options.server}/api/card/${this.card.id}`, this.card)
           .then(() => {
-            this.message = 'User has been updated successfully!';
+            this.message = 'Card has been updated successfully!';
             window.setTimeout(() => {
               this.switchMode()
             }, 1000);
@@ -76,7 +76,7 @@
           .catch((data) => {
             window.console.error('ERROR', data);
           });
-      },
+      }
     },
   };
 </script>

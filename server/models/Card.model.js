@@ -10,5 +10,7 @@ module.exports = function (sequelize, DataTypes) {
 		votes: {type: DataTypes.INTEGER},
 		updatedAt: {type: DataTypes.DATE},
 		createdAt: {type: DataTypes.DATE}
+	}, {
+		freezeTableName: true
 	})
 }

@@ -3,10 +3,10 @@
         <form v-if="!submitted">
             <fieldset>
                 <legend>Add new card</legend>
-                <p>Title<sub>*</sub>: <input required v-model="user.name" type="text"/><br></p>
-                <p>Description: <textarea noresize v-model="user.notes"></textarea></p>
+                <p>Title<sub>*</sub>: <input required v-model="card.title" type="text"/><br></p>
+                <p>Description: <textarea noresize v-model="card.description"></textarea></p>
 
-                <button v-on:click.prevent="post" v-bind:disabled="!user.name">Save</button>
+                <button v-on:click.prevent="post" v-bind:disabled="!card.title">Save</button>
             </fieldset>
         </form>
         <div v-if="submitted">
@@ -20,7 +20,7 @@
     name: 'AddCard',
     data() {
       return {
-        user: {
+        card: {
           title: '',
           description: '',
           votes: 0,
@@ -30,7 +30,7 @@
     },
     methods: {
       post() {
-        this.$http.post(`${this.$router.options.server}/api/cards`, this.user)
+        this.$http.post(`${this.$router.options.server}/api/cards`, this.card)
           .then(() => {
             this.submitted = true;
             window.setTimeout(() => {

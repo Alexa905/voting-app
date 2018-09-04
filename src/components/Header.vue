@@ -1,7 +1,7 @@
 <template>
     <header>
         <router-link :to="{ path: `/` }" replace>Home</router-link>
-        <router-link :to="{ path: `/users/add` }" replace>Add User</router-link>
+        <router-link :to="{ path: `/cards/add` }" replace>Add Card</router-link>
     </header>
 </template>
 

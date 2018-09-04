@@ -7,7 +7,7 @@ Vue.config.productionTip = false;
 Vue.use(VueResource);
 
 new Vue({
-  el: '#users-list-app',
+  el: '#voting-app',
   router,
   render: h => h(App),
 });

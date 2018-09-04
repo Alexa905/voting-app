@@ -1,3 +1,4 @@
+
 const dbConfig = {
   dialect: 'postgres',
   pool: {
@@ -11,5 +12,5 @@ const dbConfig = {
   host: process.env.DB_HOST,
 }
 
-module.exports = dbConfig
+module.exports = {dev:dbConfig, test: dbConfig }
 

@@ -2,19 +2,16 @@
     <div>
         <form>
             <fieldset>
-                <legend>Edit user</legend>
+                <legend>Edit card</legend>
                 <div class="form-content">
-                    <p>Name<sub>*</sub>: <input required v-model="user.name" type="text"/><br></p>
-                    <p>Email: <input v-model="user.email" type="email"/><br></p>
-                    <p>Country: <input v-model="user.country" type="text"/><br></p>
-                    <p>Date of birth: <input v-model="user.birthday" type="text"/></p>
-                    <p>Password: <input v-model="user.password" type="password"/></p>
-                    <p> Superuser: <input v-model="user.isSuperUser" type="checkbox"/></p>
-                    <p>Notes: <textarea noresize v-model="user.notes"></textarea></p>
+                    <p>Title<sub>*</sub>: <input required v-model="card.title" type="text"/><br></p>
+                    <p>Genre: <textarea noresize v-model="card.description"></textarea></p>
+                    <p>Votes: <input disabled v-model="card.votes" type="number"/><br></p>
                 </div>
                 <div class="form-footer">
-                    <button v-on:click.prevent="save" v-bind:disabled="!user.name">Save</button>
+                    <button v-on:click.prevent="save" v-bind:disabled="!card.title">Save</button>
                     <button v-on:click.prevent="cancel">Cancel</button>
+                    <button v-on:click.prevent="deleteCard">Delete Card</button>
                 </div>
             </fieldset>
         </form>
@@ -24,20 +21,20 @@
 <script>
   export default {
     name: 'EditUser',
-    props: ['user', 'updateUser', 'switchMode'],
+    props: ['card', 'updateCard', 'switchMode', 'deleteCard'],
     data() {
       return {
         submitted: false,
-        initialState: Object.assign({}, this.user)
+        initialState: Object.assign({}, this.card)
       };
     },
     methods: {
       cancel(){
-        this.user = Object.assign(this.user, this.initialState);
+        this.card = Object.assign(this.card, this.initialState);
         this.switchMode();
       },
       save(){
-        this.updateUser();
+        this.updateCard();
       }
     }
   };

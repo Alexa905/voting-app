@@ -1,27 +1,27 @@
 <template>
   <div class="home">
-    <UserLists v-bind:users="users" />
+    <VoteCardLists v-bind:cards="cards" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import UserLists from '@/components/UserLists.vue';
+import VoteCardLists from '@/components/VoteCardLists.vue';
 
 export default {
   name: 'Home',
   data() {
     return {
-      users: [],
+      cards: [],
     };
   },
   components: {
-    UserLists,
+    VoteCardLists,
   },
   created() {
     this.$http.get(`${this.$router.options.server}/api/cards/`)
       .then((data) => {
-        this.users = data.body;
+        this.cards = data.body;
       })
       .catch((data) => {
         window.console.error('ERROR', data);

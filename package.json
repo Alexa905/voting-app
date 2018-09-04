@@ -9,10 +9,11 @@
     "lint": "vue-cli-service lint --fix",
     "migrate-db:dev": "cross-env NODE_ENV=dev sequelize db:migrate",
     "migrate-db:dev:undo": "cross-env NODE_ENV=dev sequelize db:migrate:undo",
-    "start:postgres": "npm run db:create && npm run db:migrate && npm run db:fill",
+    "start:postgres": "npm run db:create && npm run migrate-db:dev",
     "db:create": "node_modules/.bin/sequelize db:create",
     "db:drop": "node_modules/.bin/sequelize db:drop",
-    "db:fill": "babel-node ./server/migrator.js"
+    "test": "node_modules/.bin/mocha server/tests",
+    "bump": "npm version patch --no-git-tag-version && git add package.json"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -34,7 +35,11 @@
     "babel-cli": "^6.26.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "chai": "^4.1.2",
     "lint-staged": "^7.2.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.1.0",
+    "uuid": "^3.3.2",
     "vue": "^2.5.17",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
@@ -70,5 +75,8 @@
       "vue-cli-service lint --fix",
       "git add"
     ]
-  }
+  },
+  "pre-commit": [
+    "bump"
+  ]
 }

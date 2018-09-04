@@ -9,8 +9,6 @@ const bodyParser = require('body-parser')
 const routes = require('./router.js')
 const cookieParser = require('cookie-parser')
 
-
-
 app.use(cors());
 app.use(cookieParser())
 app.use(helmet())
