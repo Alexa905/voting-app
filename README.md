@@ -7,7 +7,7 @@ npm install
 
 ## Project START
 
-### Compiles files for client
+### Compile files for client
 ```
 npm run build
 ```
@@ -35,7 +35,7 @@ npm test
 ```
 
 
-##Client:
+## Client:
 
 ### Development: Compiles and hot-reloads for development
 ```
