@@ -7,7 +7,7 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  server: 'http://localhost:4001',
+  server: process.env.VUE_APP_SERVER,
   routes: [
     {
       path: '/',

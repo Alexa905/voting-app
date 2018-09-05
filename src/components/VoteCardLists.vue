@@ -3,7 +3,7 @@
         <input class="input-search" type="search" v-model="search" placeholder="Search card by title">
         <ul class="card-list">
             <li v-for="card in filteredCards" :key="card.id">
-                <CardListItem :card="card" :updateCard="updateCard" :user="stubUser"/>
+                <CardListItem :card="card" :updateCard="updateCard" :user="user"/>
             </li>
         </ul>
     </div>
@@ -14,12 +14,11 @@
     import CardListItem from '@/components/CardListItem.vue';
 	export default {
 		name: 'VoteCardsList',
-		props: ['cards'],
+		props: ['cards', 'user'],
 		components: {CardListItem},
 		data(){
 			return {
-				search: '',
-				stubUser: "user1"
+				search: ''
 			}
 		},
 		methods: {

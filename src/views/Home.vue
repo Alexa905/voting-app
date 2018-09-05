@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <VoteCardLists v-bind:cards="cards"/>
+        <VoteCardLists v-bind:cards="cards" :user="user"/>
     </div>
 </template>
 
@@ -13,6 +13,7 @@
 		data() {
 			return {
 				cards: [],
+				user:''
 			};
 		},
 		components: {
@@ -26,6 +27,11 @@
 				.catch((data) => {
 					window.console.error('ERROR', data);
 				});
+            this.$http.get(`${this.$router.options.server}/api/user`)
+                            .then(res => {this.user = res.body;})
+                            .catch((data) => {
+                                window.console.error('ERROR', data);
+                            });
 		},
 	};
 </script>

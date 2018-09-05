@@ -85,4 +85,4 @@ const testData = [{
 	"updatedAt": "2018-02-18 01:11:20",
 	"createdAt": "2017-09-17 23:54:51" 
 }]
-module.exports = {dev: cards, test: testData};
+module.exports = {dev: cards, test: testData, prod: cards};

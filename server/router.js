@@ -36,4 +36,10 @@ router.route('/card/:id')
 			.catch(e => res.status(500).send(e))
 	});
 
+
+router.route('/user/')
+    .get(function (req, res, next) {
+        res.json({ip:res.clientIp})
+    });
+
 module.exports = router

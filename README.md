@@ -14,19 +14,19 @@ npm run build
 
 ### Create development data base
 ```
-npm run db:create
+npm run db:dev:setup
 ```
 
 ### Run server
 ```
-npm start => http://localhost:4001
+npm start:dev => http://localhost:4001
 ```
 
 ## Run Tests:
 
 ### Create test data base
 ```
-npm run db:create:test
+npm run db:test:setup
 ```
 
 ### Run tests
@@ -52,5 +52,3 @@ npm run build
 npm run lint
 ```
 
-Docker:
-docker-compose up --build

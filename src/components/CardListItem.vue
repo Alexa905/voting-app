@@ -41,7 +41,7 @@
 					card.votes--;
 					this.result = 'down'
 				}
-				card.users.push(this.user);
+				card.users.push(this.user.ip);
 				this.updateCard(card);
 				this.disabled = true;
 
@@ -52,7 +52,7 @@
 				return this.cards.filter(card => card.title.match(this.search))
 			},
 			voted(){
-				return this.card.users.includes(this.user);
+				return this.card.users.includes(this.user.ip);
             }
 		}
 	};
