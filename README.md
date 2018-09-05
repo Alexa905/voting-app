@@ -19,7 +19,7 @@ npm run db:create
 
 ### Run server
 ```
-npm start => http://localhost:4000
+npm start => http://localhost:4001
 ```
 
 ## Run Tests:
