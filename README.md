@@ -6,11 +6,36 @@ npm install
 ```
 
 ## Project START
+
+### Compiles files for client
+```
+npm run build
+```
+
+### Create development data base
+```
+npm run db:create
+```
+
+### Run server
 ```
 npm start => http://localhost:4000
 ```
 
+## Run Tests:
 
+### Create test data base
+```
+npm run db:create:test
+```
+
+### Run tests
+```
+npm test
+```
+
+
+##Client:
 
 ### Development: Compiles and hot-reloads for development
 ```

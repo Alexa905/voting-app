@@ -7,9 +7,9 @@ services:
     environment:
       - NODE_ENV=production
     ports:
-      - "4000:4000"
+      - "4001:4001"
     volumes:
       - ./:/usr/src/app
     expose:
-      - "4000"
+      - "4001"
     command: "npm start"

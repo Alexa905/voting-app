@@ -3,7 +3,7 @@
         <input class="input-search" type="search" v-model="search" placeholder="Search card by title">
         <ul class="card-list">
             <li v-for="card in filteredCards" :key="card.id">
-                <CardListItem :card="card" :updateCard="updateCard"/>
+                <CardListItem :card="card" :updateCard="updateCard" :user="stubUser"/>
             </li>
         </ul>
     </div>
@@ -18,7 +18,8 @@
 		components: {CardListItem},
 		data(){
 			return {
-				search: ''
+				search: '',
+				stubUser: "user1"
 			}
 		},
 		methods: {
@@ -144,7 +145,7 @@
 
     .edit-icon {
         background-size: cover;
-        background-repeat: none;
+        background-repeat: no-repeat;
         display: inline-block;
         width: 20px;
         position: absolute;

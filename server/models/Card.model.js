@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
 		title: {type: DataTypes.STRING, unique: {msg: 'This title already exists'}},
 		description: {type: DataTypes.STRING},
 		votes: {type: DataTypes.INTEGER},
+		users: {type: DataTypes.ARRAY(DataTypes.STRING), defaultValue: []},
 		updatedAt: {type: DataTypes.DATE},
 		createdAt: {type: DataTypes.DATE}
 	}, {

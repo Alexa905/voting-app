@@ -6,9 +6,9 @@
         <p>Rating: <b>{{ card.votes || "0"}}</b></p>
 
         <div class="buttons">
-            <button :class="{ active: result === 'up' }" :disabled="voted" v-on:click.prevent="vote(card, true)">+1
+            <button :class="{ active: result === 'up' }" :disabled="voted || disabled" v-on:click.prevent="vote(card, true)">+1
             </button>
-            <button :class="{ active: result === 'down' }" :disabled="voted || card.votes===0"
+            <button :class="{ active: result === 'down' }" :disabled="voted || card.votes===0 || disabled "
                     v-on:click.prevent="vote(card, false)">-1
             </button>
             {{voted ? 'Thank you for voting!' : 'Please vote'}}
@@ -25,11 +25,11 @@
 <script>
 	export default {
 		name: 'CardListItem',
-		props: ['card', 'updateCard'],
+		props: ['card', 'updateCard','user'],
 		data(){
 			return {
-				voted: false,
-				result: ''
+				result: '',
+				disabled:  false
 			}
 		},
 		methods: {
@@ -41,15 +41,19 @@
 					card.votes--;
 					this.result = 'down'
 				}
+				card.users.push(this.user);
 				this.updateCard(card);
-				this.voted = true;
+				this.disabled = true;
 
 			}
 		},
 		computed: {
-			filteredCards: function () {
+			filteredCards () {
 				return this.cards.filter(card => card.title.match(this.search))
-			}
+			},
+			voted(){
+				return this.card.users.includes(this.user);
+            }
 		}
 	};
 </script>
@@ -174,7 +178,7 @@
 
     .edit-icon {
         background-size: cover;
-        background-repeat: none;
+        background-repeat: no-repeat;
         display: inline-block;
         width: 20px;
         position: absolute;

@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
 
   res.header({
     // Website you wish to allow to connect
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': `localhost:${process.env.NODE_ENV}`,
     // Request methods you wish to allow
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
     // Request headers you wish to allow

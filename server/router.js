@@ -26,7 +26,7 @@ router.route('/card/:id')
 	})
 	.delete(function (req, res, next) {
 		card.destroy({where: {id: req.params.id}})
-			.then(() => res.sendStatus(202))
+			.then(() => res.sendStatus(200))
 			.catch(e => res.status(500).send(e))
 	})
 	.put(function (req, res, next) {

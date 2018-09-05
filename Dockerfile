@@ -17,7 +17,7 @@ RUN npm install
 COPY . .
 
 # replace this with your application's default port
-EXPOSE 4000
+EXPOSE 4001
 
 
 CMD [ "npm", "start" ]
